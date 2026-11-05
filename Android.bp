@@ -16,6 +16,29 @@ soong_namespace {
 }
 
 cc_prebuilt_library_shared {
+    name: "libnelib",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libnelib.so",
+            ],
+            shared_libs: [
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
     name: "vendor.qti.diaghal-V1-ndk",
     owner: "nothing",
     strip: {
@@ -5979,7 +6002,7 @@ cc_prebuilt_library_shared {
     prefer: true,
     soc_specific: true,
 }
- 
+
 cc_prebuilt_library_shared {
     name: "liboemcrypto",
     owner: "nothing",
